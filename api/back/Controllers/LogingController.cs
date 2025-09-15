@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Extensions;
 using System.Text.Json;
 using System.Globalization;
 using service;
+using Api.Service.Dto;
 
 namespace back.Controllers;
 
@@ -13,10 +14,16 @@ public class LoginController : ControllerBase
 {
     [HttpPost("Auth")]
     [AllowAnonymous]
-    public IActionResult Auth([FromBody] Object model)
+    public IActionResult Auth([FromBody] Login login)
     {
-        
+        if (!"SENHA".Equals(login.Password))
+            return new JsonResult(new
+            {
+                data = string.Empty
+            })
+            { StatusCode = 401 };
         var token = Token.Create();
+        
 
         var ret = new JsonResult(new
         {

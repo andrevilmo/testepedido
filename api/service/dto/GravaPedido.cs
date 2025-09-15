@@ -7,5 +7,6 @@ namespace Api.Service.Dto
     {
         public Pedido Pedido { get; set; }
         public List<ItemPedido> ItensPedido { get; set; }
+        public List<Promocao> Promocoes { get; set; }
     }
 }

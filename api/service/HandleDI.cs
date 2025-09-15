@@ -1,6 +1,10 @@
 ﻿namespace service;
+
+using Api.Service.Dto;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using service.Impl;
 using service.Interfaces;
 
 
@@ -8,10 +12,7 @@ public class HandleDI
 {
     public static async Task ApplyDI(IServiceCollection services)
     {
-                services.AddSingleton<IGravaPedidoService, GravaPedidoService>();
-                //services.AddTransient<OddApplication>(); // Register the main application class
-        // Resolve and run your main application logic
-        //await host.Services.GetRequiredService<OddApplication>().Run();
+        _ = services.AddSingleton<IGravaPedidoService, GravaPedidoService>();
     }
 }
 
@@ -24,7 +25,7 @@ public class PedidoApplication
         _ServiceGravaPedido = myService;
     }
 
-    public Task PedidoSave(object o)
+    public Task PedidoSave(GravaPedido o)
     {
         _ServiceGravaPedido.Save(o);
         return Task.CompletedTask;

@@ -15,3 +15,4 @@ C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\refint\service.dll
 C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.pdb
 C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.genruntimeconfig.cache
 C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\ref\service.dll
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.sourcelink.json

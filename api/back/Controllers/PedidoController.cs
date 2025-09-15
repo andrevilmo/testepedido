@@ -4,12 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Extensions;
 using System.Text.Json;
 using System.Globalization;
-using service;
-//using saveodd;
 using Newtonsoft.Json;
 using db;
 using service.Interfaces;
 using Api.Db.Models.Entities;
+using Api.Service.Dto;
 
 namespace back.Controllers;
 
@@ -25,7 +24,7 @@ public class PedidoController : ControllerBase
 
     [HttpPost("Save")]
     [AllowAnonymous]
-    public IActionResult Save([FromBody] object? model)
+    public IActionResult Save([FromBody] GravaPedido model)
     {
         // Deserialize with DateTimeZoneHandling.Utc
         JsonSerializerSettings settingsDateTimeUtc = new JsonSerializerSettings
@@ -42,7 +41,7 @@ public class PedidoController : ControllerBase
         };
         var toSave = JsonConvert.DeserializeObject<List<Pedido>>(model!.ToString()!, settings);
         
-        srvGravaPedido.Save(toSave!);
+        srvGravaPedido.Save(model!);
 
         var ret = new JsonResult(new
         {

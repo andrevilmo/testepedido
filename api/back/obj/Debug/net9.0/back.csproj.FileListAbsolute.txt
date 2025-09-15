@@ -123,3 +123,4 @@ C:\Users\8127\source\teste\api\back\obj\Debug\net9.0\refint\back.dll
 C:\Users\8127\source\teste\api\back\obj\Debug\net9.0\back.pdb
 C:\Users\8127\source\teste\api\back\obj\Debug\net9.0\back.genruntimeconfig.cache
 C:\Users\8127\source\teste\api\back\obj\Debug\net9.0\ref\back.dll
+C:\Users\8127\source\teste\api\back\obj\Debug\net9.0\back.sourcelink.json

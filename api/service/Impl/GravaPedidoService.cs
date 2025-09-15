@@ -1,8 +1,7 @@
-using db;
-using Microsoft.EntityFrameworkCore; 
+using Api.Service.Dto;
 using service.Interfaces;
 
-namespace service;
+namespace service.Impl;
 public class GravaPedidoService : IGravaPedidoService
 {
 
@@ -10,9 +9,11 @@ public class GravaPedidoService : IGravaPedidoService
     {
       return string.Empty;
     }
+ 
 
-    public void Save(object toSave)
+    public void Save(GravaPedido toSave)
     {
         throw new NotImplementedException();
     }
+
 }
