@@ -1,0 +1,29 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5077",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+                "TOKEN_SECRET":"d9fbc103fc0d0aafa340cb95d03743bd09438d1fdedb45e442efce3c751b87da6f74a1bf1043977039d39c5bf66baa7dc55dccf11571c2f8745e2ea6eda35454",
+                "CONNECTION_STRING_LOCAL":"Host=127.0.0.1:5432;Database=Odd;Username=postgres;Password=postgres;Pooling=false;Timeout=300;CommandTimeout=300",
+                "CONNECTION_STRING":"Host=odddb.clwcmomgaw1y.sa-east-1.rds.amazonaws.com;Database=Odd;Username=postgres;Password=odddb2025;Pooling=false;Timeout=300;CommandTimeout=300"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "https://localhost:7080;http://localhost:5077",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+                "TOKEN_SECRET":"d9fbc103fc0d0aafa340cb95d03743bd09438d1fdedb45e442efce3c751b87da6f74a1bf1043977039d39c5bf66baa7dc55dccf11571c2f8745e2ea6eda35454",
+                "CONNECTION_STRING_LOCAL":"Host=127.0.0.1:5432;Database=Odd;Username=postgres;Password=postgres;Pooling=false;Timeout=300;CommandTimeout=300",
+                "CONNECTION_STRING":"Host=odddb.clwcmomgaw1y.sa-east-1.rds.amazonaws.com;Database=Odd;Username=postgres;Password=odddb2025;Pooling=false;Timeout=300;CommandTimeout=300"
+      }
+    }
+  }
+}

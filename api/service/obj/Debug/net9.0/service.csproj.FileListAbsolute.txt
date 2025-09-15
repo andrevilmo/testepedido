@@ -1,0 +1,17 @@
+C:\Users\8127\source\teste\api\service\bin\Debug\net9.0\service.deps.json
+C:\Users\8127\source\teste\api\service\bin\Debug\net9.0\service.runtimeconfig.json
+C:\Users\8127\source\teste\api\service\bin\Debug\net9.0\service.dll
+C:\Users\8127\source\teste\api\service\bin\Debug\net9.0\service.pdb
+C:\Users\8127\source\teste\api\service\bin\Debug\net9.0\db.dll
+C:\Users\8127\source\teste\api\service\bin\Debug\net9.0\db.pdb
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.csproj.AssemblyReference.cache
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.AssemblyInfoInputs.cache
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.AssemblyInfo.cs
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.csproj.CoreCompileInputs.cache
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.csproj.Up2Date
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.dll
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\refint\service.dll
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.pdb
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\service.genruntimeconfig.cache
+C:\Users\8127\source\teste\api\service\obj\Debug\net9.0\ref\service.dll

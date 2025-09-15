@@ -1,0 +1,19 @@
+Construir um módulo de Gestão de Pedidos com:
+
+API .NET com regras de negócio (cálculo de estoque, cálculo de preço com promoções).
+SQL Server com modelagem e stored procedure.
+Angular com UX responsiva, formulários reativos
+ 
+
+4.2 Requisitos funcionais
+
+Catálogo & Estoque
+Produto: Id, Sku (único), Nome, PrecoBase, Ativo, EstoqueAtual.
+Promoção: regra (ex.: porcentagem, valor fixo, “leve X pague Y”).
+Política de preço final = PrecoBase – descontos de promoções aplicáveis
+Pedido
+Cabeçalho: Id, Numero (único), ClienteId, Status (Rascunho, Confirmado, Cancelado, Faturado), TotalBruto, Desconto, TotalLiquido, CriadoEm.
+Itens: ProdutoId, Qtd, PrecoUnitario, DescontoItem, TotalItem.
+
+Confirmar Pedido: valida saldo (EstoqueAtual >= Qtd + Reservas de outros pedidos), baixa estoque, zera reserva e fixa totais.
+Cancelamento: reverte baixas/reservas conforme estado.

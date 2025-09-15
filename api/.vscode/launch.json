@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "enableStepFiltering":false,
+            "program": "${workspaceFolder}/back/bin/Debug/net9.0/back.dll",
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "env": {
+                "TOKEN_SECRET":"d9fbc103fc0d0aafa340cb95d03743bd09438d1fdedb45e442efce3c751b87da6f74a1bf1043977039d39c5bf66baa7dc55dccf11571c2f8745e2ea6eda35454",
+                "CONNECTION_STRING_LOCAL":"Host=127.0.0.1:5432;Database=Odd;Username=postgres;Password=postgres;Pooling=false;Timeout=300;CommandTimeout=300",
+                "CONNECTION_STRING":"Server=127.0.0.1;Database=teste;User Id=sa;Password=SqlServer2019!;"
+                ,"ASPNETCORE_URLS":"https://localhost:7001;http://localhost:5000"
+            }
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+services:
+  bd:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "SqlServer2019!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433" 
+    networks:
+      odd_network:
+        ipv4_address: 172.20.0.9 
+  api:
+    container_name: testeback_app
+    image: ${DOCKER_REGISTRY-}testeback
+    build:
+      context: api
+      dockerfile: Dockerfile
+    environment:
+      TOKEN_SECRET: d9fbc103fc0d0aafa340cb95d03743bd09438d1fdedb45e442efce3c751b87da6f74a1bf1043977039d39c5bf66baa7dc55dccf11571c2f8745e2ea6eda35454
+      CONNECTION_STRING: Server=172.20.0.9;Database=teste;User Id=sa;Password=SqlServer2019!;
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: 8080
+      ASPNETCORE_HTTPS_PORTS: 8081
+      ASPNETCORE_URLS: http://0.0.0.0:8080;http://0.0.0.0:8081
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    networks:
+      odd_network:
+        ipv4_address: 172.20.0.10 
+#  ui:
+#    container_name: testefront_app
+#    image: ${DOCKER_REGISTRY-}testefront_app
+#    build:
+#      context: ui
+#      dockerfile: Dockerfile
+#    environment:
+#      TOKEN_SECRET: d9fbc103fc0d0aafa340cb95d03743bd09438d1fdedb45e442efce3c751b87da6f74a1bf1043977039d39c5bf66baa7dc55dccf11571c2f8745e2ea6eda35454
+#      CONNECTION_STRING: Host=odddb.clwcmomgaw1y.sa-east-1.rds.amazonaws.com;Database=Odd;Username=postgres;Password=odddb2025;Pooling=false;Timeout=300;CommandTimeout=300
+#      ASPNETCORE_ENVIRONMENT: Development
+#      ASPNETCORE_HTTP_PORTS: 8000
+#      ASPNETCORE_HTTPS_PORTS: 8001
+#      ASPNETCORE_URLS: http://0.0.0.0:8000;http://0.0.0.0:8001
+#    ports:
+#      - "8000:8000"
+#      - "8001:8001"
+#    networks:
+#      odd_network:
+#        ipv4_address: 172.20.0.11 
+networks:
+  odd_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
