@@ -1,32 +1,48 @@
 using Api.Db.Models.Entities;
 using Api.Service.Dto;
+using db;
 using service.Interfaces;
 
 namespace service.Impl;
-public class ProdutoRepository : IProdutoRepository
+public class ProdutoRepository : service.Interfaces.IProdutoRepository
 {
+    private readonly PedidoDBContext _context;
+    public ProdutoRepository(PedidoDBContext context)
+    {
+        _context = context;
+    }
     public Produto Load(int id)
     {
-        return new Produto
-        {
-            Id = id, 
-        };
+        return (from p in _context.Produtos
+               where p.Id == id
+               select p).FirstOrDefault()!;
     }
 
-    public Produto GetAll()
+    public List<Produto> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.Produtos.ToList();
     }
-
     public void Save(Produto toSave)
     {
-        // Lógica para salvar o produto (simulada)
-        Console.WriteLine($"Produto {toSave.Nome} salvo com sucesso!");
+        if (toSave.Id > 0)
+            _context.Produtos.Add(toSave);
+        else
+        {
+            Produto original = _context.Produtos.Where(i => i.Id.Equals(toSave.Id)).First();
+            original.Ativo = toSave.Ativo;
+            original.EstoqueAtual = toSave.EstoqueAtual;
+            original.Nome = toSave.Nome;
+            original.PrecoBase = toSave.PrecoBase;
+            original.Sku = toSave.Sku;
+        }
+        _context.SaveChanges();
     }
 
-    public void Delete(int id)
+    public void Delete(Produto toDelete)
     {
-        // Lógica para deletar o produto (simulada)
-        Console.WriteLine($"Produto com ID {id} deletado com sucesso!");
-    } 
+        _context.Produtos.Remove(toDelete);
+        _context.SaveChanges();
+    }
+ 
+
 }

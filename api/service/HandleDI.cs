@@ -13,7 +13,9 @@ public class HandleDI
     public static async Task ApplyDI(IServiceCollection services)
     {
         _ = services.AddSingleton<IGravaPedidoService, GravaPedidoService>();
+        _ = services.AddSingleton<IProdutoRepository, ProdutoRepository>();
         _ = services.AddSingleton<IProdutoService, ProdutoService>();
+
     }
 }
 

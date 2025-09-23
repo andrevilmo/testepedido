@@ -13,6 +13,7 @@ using Api.Service.Dto;
 namespace back.Controllers;
 
 [Route("api/[controller]")]
+[Authorize]
 public class ProdutoController : ControllerBase
 {
     IProdutoService srvGravaProduto;
@@ -34,7 +35,7 @@ public class ProdutoController : ControllerBase
     [HttpDelete("Delete")] 
     public IActionResult Delete([FromBody] Produto model)
     { 
-        srvGravaProduto.Delete(model!.Id);
+        srvGravaProduto.Delete(model);
         var ret = new JsonResult(new
         {
             data = "OK"
@@ -48,6 +49,16 @@ public class ProdutoController : ControllerBase
         var ret = new JsonResult(new
         {
             data = "OK"
+        });
+        return ret;
+    }
+    [HttpGet("All")]
+    public IActionResult All()
+    {
+        var allProducts = srvGravaProduto.GetAll();
+        var ret = new JsonResult(new
+        {
+            data = allProducts
         });
         return ret;
     }
