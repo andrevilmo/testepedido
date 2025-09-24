@@ -27,8 +27,8 @@ public class LoginController : ControllerBase
 
         var ret = new JsonResult(new
         {
-            data = token
-
+            data = token,
+            role = login.User
         }
 
         , new JsonSerializerOptions

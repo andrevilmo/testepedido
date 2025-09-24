@@ -24,7 +24,7 @@ public class ProdutoRepository : service.Interfaces.IProdutoRepository
     }
     public void Save(Produto toSave)
     {
-        if (toSave.Id > 0)
+        if (toSave.Id < 1)
             _context.Produtos.Add(toSave);
         else
         {
@@ -34,6 +34,8 @@ public class ProdutoRepository : service.Interfaces.IProdutoRepository
             original.Nome = toSave.Nome;
             original.PrecoBase = toSave.PrecoBase;
             original.Sku = toSave.Sku;
+            _context.Produtos.Attach(original);
+            _context.Entry(original).State = Microsoft.EntityFrameworkCore.EntityState.Modified;    
         }
         _context.SaveChanges();
     }
