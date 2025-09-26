@@ -13,17 +13,18 @@ using Api.Service.Dto;
 namespace back.Controllers;
 
 [Route("api/[controller]")]
-public class PromocaoController : ControllerBase
+[Authorize]
+public class PromotionController : ControllerBase
 {
-    IPromocaoService srvGravaPromocao;
-    public PromocaoController(IPromocaoService _gravaSrv)
+    IPromocaoService srvGravaPromotion;
+    public PromotionController(IPromocaoService _gravaSrv)
     {
-        srvGravaPromocao = _gravaSrv;
+        srvGravaPromotion = _gravaSrv;
     }
     [HttpPost("Save")] 
     public IActionResult Save([FromBody] Promocao model)
     { 
-        srvGravaPromocao.Save(model!);
+        srvGravaPromotion.Save(model!);
         var ret = new JsonResult(new
         {
             data = "OK"
@@ -34,7 +35,7 @@ public class PromocaoController : ControllerBase
     [HttpDelete("Delete")] 
     public IActionResult Delete([FromBody] Promocao model)
     { 
-        srvGravaPromocao.Delete(model);
+        srvGravaPromotion.Delete(model);
         var ret = new JsonResult(new
         {
             data = "OK"
@@ -44,10 +45,20 @@ public class PromocaoController : ControllerBase
     [HttpGet("Load")]
     public IActionResult Load([FromBody] Promocao model)
     { 
-        srvGravaPromocao.Load(model!.Id);
+        srvGravaPromotion.Load(model!.Id);
         var ret = new JsonResult(new
         {
             data = "OK"
+        });
+        return ret;
+    }
+    [HttpGet("All")]
+    public IActionResult All()
+    {
+        var allProducts = srvGravaPromotion.GetAll();
+        var ret = new JsonResult(new
+        {
+            data = allProducts
         });
         return ret;
     }

@@ -7,29 +7,37 @@ using service.Interfaces;
 namespace service.Impl;
 public class PromocaoService : IPromocaoService
 {
+    private readonly IPromocaoRepository _repository;
+    public PromocaoService(IPromocaoRepository repository)
+    {
+        _repository = repository;
+    }
+    public Promocao Load(int id)
+    {
+        return new Promocao
+        {
+            //Id = id,
+        };
+    }
 
-  IPromocaoRepository _repository;
-  public PromocaoService(IPromocaoRepository repository)
-  {
-    _repository = repository;
-  }
-  public Promocao Load(int id)
-  {
-    return _repository.Load(id);
-  }
-
-    public Promocao GetAll()
+    public List<Promocao> GetAll()
     {
         return _repository.GetAll();
     }
 
     public void Save(Promocao toSave)
     {
-      _repository.Save(toSave);
+        _repository.Save(toSave);
+        // Lógica para salvar o promocao (simulada)
+        Console.WriteLine($"Promocao {toSave.Regra} salvo com sucesso!");
     }
 
-    public void Delete(int id)
+    public void Delete(Promocao toDelete)
     {
-        _repository.Delete(id);
-    } 
+        _repository.Delete(toDelete);
+        // Lógica para deletar o promocao (simulada)
+        Console.WriteLine($"Promocao com ID {toDelete.Id} deletado com sucesso!");
+    }
+ 
+
 }

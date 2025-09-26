@@ -7,5 +7,6 @@ public interface IPromocaoService
 {
     void Save(Promocao toSave);
     Promocao Load(int id);
-    Promocao GetAll();
-    void Delete(int id);}
+    List<Promocao> GetAll();
+    void Delete(Promocao toSave);
+}

@@ -1,32 +1,47 @@
 using Api.Db.Models.Entities;
 using Api.Service.Dto;
+using db;
 using service.Interfaces;
 
 namespace service.Impl;
 public class PromocaoRepository : IPromocaoRepository
 {
+    private readonly PedidoDBContext _context;
+    public PromocaoRepository(PedidoDBContext context)
+    {
+        _context = context;
+    }
     public Promocao Load(int id)
     {
-        return new Promocao
-        {
-            Id = id, 
-        };
+        return (from p in _context.Promocoes
+               where p.Id == id
+               select p).FirstOrDefault()!;
     }
 
-    public Promocao GetAll()
+    public List<Promocao> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.Promocoes.ToList();
     }
-
     public void Save(Promocao toSave)
     {
-        // Lógica para salvar o Promocao (simulada)
-        Console.WriteLine($"Promocao {toSave.Regra} salvo com sucesso!");
+        if (toSave.Id < 1)
+            _context.Promocoes.Add(toSave);
+        else
+        {
+            Promocao original = _context.Promocoes.Where(i => i.Id.Equals(toSave.Id)).First();
+            original.Id = toSave.Id;
+            original.Regra = toSave.Regra;
+            _context.Promocoes.Attach(original);
+            _context.Entry(original).State = Microsoft.EntityFrameworkCore.EntityState.Modified;    
+        }
+        _context.SaveChanges();
     }
 
-    public void Delete(int id)
+    public void Delete(Promocao toDelete)
     {
-        // Lógica para deletar o Promocao (simulada)
-        Console.WriteLine($"Promocao com ID {id} deletado com sucesso!");
-    } 
+        _context.Promocoes.Remove(toDelete);
+        _context.SaveChanges();
+    }
+ 
+
 }

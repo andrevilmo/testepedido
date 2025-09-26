@@ -12,9 +12,9 @@ public class HandleDI
 {
     public static async Task ApplyDI(IServiceCollection services)
     {
-        _ = services.AddSingleton<IGravaPedidoService, GravaPedidoService>();
-        _ = services.AddSingleton<IProdutoRepository, ProdutoRepository>();
-        _ = services.AddSingleton<IProdutoService, ProdutoService>();
+        _ = services.AddScoped<IGravaPedidoService, GravaPedidoService>();
+        _ = services.AddScoped<IProdutoRepository, ProdutoRepository>();
+        _ = services.AddScoped<IProdutoService, ProdutoService>();
 
     }
 }
