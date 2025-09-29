@@ -12,10 +12,7 @@ public class ProdutoService : IProdutoService
     }
     public Produto Load(int id)
     {
-        return new Produto
-        {
-            //Id = id,
-        };
+        return _repository.Load(id);
     }
 
     public List<Produto> GetAll()

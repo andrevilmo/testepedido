@@ -32,10 +32,11 @@ public class ProdutoController : ControllerBase
         });
         return ret;
     }
-    [HttpDelete("Delete")] 
-    public IActionResult Delete([FromBody] Produto model)
+    [HttpDelete("Delete/{id}")] 
+    public IActionResult Delete([FromRoute] int id)
     { 
-        srvGravaProduto.Delete(model);
+        var itemToDelete = srvGravaProduto.Load(id);
+        srvGravaProduto.Delete(itemToDelete);
         var ret = new JsonResult(new
         {
             data = "OK"
