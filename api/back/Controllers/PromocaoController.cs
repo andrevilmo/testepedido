@@ -20,9 +20,9 @@ public class PromocaoController : ControllerBase
     {
         srvGravaPromocao = _gravaSrv;
     }
-    [HttpPost("Save")] 
+    [HttpPost("Save")]
     public IActionResult Save([FromBody] Promocao model)
-    { 
+    {
         srvGravaPromocao.Save(model!);
         var ret = new JsonResult(new
         {
@@ -31,9 +31,9 @@ public class PromocaoController : ControllerBase
         });
         return ret;
     }
-    [HttpDelete("Delete")] 
+    [HttpDelete("Delete")]
     public IActionResult Delete([FromBody] Promocao model)
-    { 
+    {
         srvGravaPromocao.Delete(model);
         var ret = new JsonResult(new
         {
@@ -43,11 +43,21 @@ public class PromocaoController : ControllerBase
     }
     [HttpGet("Load")]
     public IActionResult Load([FromBody] Promocao model)
-    { 
+    {
         srvGravaPromocao.Load(model!.Id);
         var ret = new JsonResult(new
         {
             data = "OK"
+        });
+        return ret;
+    }
+        [HttpGet("All")]
+    public IActionResult All()
+    {
+        var all = srvGravaPromocao.GetAll();
+        var ret = new JsonResult(new
+        {
+            data = all
         });
         return ret;
     }

@@ -13,6 +13,7 @@ using Api.Service.Dto;
 namespace back.Controllers;
 
 [Route("api/[controller]")]
+[Authorize]
 public class PedidoController : ControllerBase
 {
     IGravaPedidoService srvGravaPedido;
